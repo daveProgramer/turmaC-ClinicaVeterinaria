@@ -1,32 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace ClinicaVeterinaria.Models {
    public class Donos {
 
-      //*******************************************************************
-      // criar um Construtor
-      // para inicializar ListaDosMeusAnimais      
-      //*******************************************************************
+      // vai representar os dados da tabela dos DONOS
+
+      // criar o construtor desta classe
+      // e carregar a lista de Animais
       public Donos() {
-         ListaDosMeusAnimais = new HashSet<Animais>();
+         ListaDeAnimais = new HashSet<Animais>();
       }
 
 
+      [Key]
+      public int DonoID { get; set; }
 
-      public int ID { get; set; }  // por se chamar ID, será PK
+      [Required]
+      public string Nome { set; get; }
 
-      public string Nome { get; set; }
-
+      [Required]
       public string NIF { get; set; }
 
-      //*******************************************************************
-      // informar a classe que 
-      // Um DONO tem Muitos ANIMAIS
-      //*******************************************************************
-      public virtual ICollection<Animais> ListaDosMeusAnimais { get; set; }
+      // especificar que um DONO tem muitos ANIMAIS
+      public ICollection<Animais> ListaDeAnimais { get; set; }
 
 
    }
