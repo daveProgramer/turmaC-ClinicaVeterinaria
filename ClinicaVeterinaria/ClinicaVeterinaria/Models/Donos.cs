@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -17,9 +18,11 @@ namespace ClinicaVeterinaria.Models {
 
 
       [Key]
+      [DatabaseGenerated(DatabaseGeneratedOption.None )] // impede o atributo de ser AutoNumber
       public int DonoID { get; set; }
 
-      [Required]
+      [Required(ErrorMessage ="Deve introduzir o {0}...")]
+      [Display(Name ="Nome do Dono")]
       public string Nome { set; get; }
 
       [Required]
